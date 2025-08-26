@@ -27,3 +27,35 @@ function milePace(miles, duration) {
 ```
 
 ---
+
+## Camel Case
+
+Given a string, return its camel case version using the following rules:
+
+- Words in the string argument are separated by one or more characters from the following set: space ( ), dash (-), or underscore (\_). Treat any sequence of these as a word break.
+- The first word should be all lowercase.
+- Each subsequent word should start with an uppercase letter, with the rest of it lowercase.
+- All spaces and separators should be removed.
+
+#### Some tests:
+
+- `toCamelCase("hello world")` should return `"helloWorld"`.
+- `toCamelCase("HELLO WORLD") `should return `"helloWorld"`.
+- `toCamelCase("secret agent-X")` should return `"secretAgentX"`.
+- `toCamelCase("FREE cODE cAMP")` should return `"freeCodeCamp"`.
+- `toCamelCase("ye old-_-sea  faring_buccaneer_-_with a - peg__leg----and a_parrot_ _named- _squawk")` should return `"yeOldSeaFaringBuccaneerWithAPegLegAndAParrotNamedSquawk"`.
+
+#### My solution:
+
+```js
+function toCamelCase(s) {
+  s = s.toLowerCase();
+  const words = s.split(/[^a-zA-Z0-9]+/g);
+
+  for (let i = 1; i < words.length; i++) {
+    words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+  }
+
+  return words.join("");
+}
+```
