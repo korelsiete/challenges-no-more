@@ -1,0 +1,11 @@
+function findDuplicates(arr) {
+  // Verifica que haya un elemento igual después del índice.
+  // Los que no tienen duplicados son borrados.
+  const duplicates = arr.filter((item, index) => arr.includes(item, index + 1));
+
+  // Ordenamos de forma ascendente.
+  const ordered = duplicates.sort((a, b) => a - b);
+
+  // Al final boramos los duplicados extras para tener valores únicos.
+  return [...new Set(ordered)];
+}

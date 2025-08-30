@@ -40,7 +40,7 @@ Given a string, return its camel case version using the following rules:
 #### Some tests:
 
 - `toCamelCase("hello world")` should return `"helloWorld"`.
-- `toCamelCase("HELLO WORLD") `should return `"helloWorld"`.
+- `toCamelCase("HELLO WORLD")` should return `"helloWorld"`.
 - `toCamelCase("secret agent-X")` should return `"secretAgentX"`.
 - `toCamelCase("FREE cODE cAMP")` should return `"freeCodeCamp"`.
 - `toCamelCase("ye old-_-sea  faring_buccaneer_-_with a - peg__leg----and a_parrot_ _named- _squawk")` should return `"yeOldSeaFaringBuccaneerWithAPegLegAndAParrotNamedSquawk"`.
@@ -57,5 +57,29 @@ function toCamelCase(s) {
   }
 
   return words.join("");
+}
+```
+
+---
+
+## Array Duplicates
+
+Given an array of integers, return an array of integers that appear more than once in the initial array, sorted in ascending order. If no values appear more than once, return an empty array.
+
+- Only include one instance of each value in the returned array.
+
+#### Some tests:
+
+- `findDuplicates([1, 2, 3, 4, 5])` should return `[]`.
+- `findDuplicates([1, 2, 3, 4, 1, 2])` should return `[1, 2]`.
+- `findDuplicates([2, 34, 0, 1, -6, 23, 5, 3, 2, 5, 67, -6, 23, 2, 43, 2, 12, 0, 2, 4, 4])` should return `[-6, 0, 2, 4, 5, 23]`.
+
+#### My solution:
+
+```js
+function findDuplicates(arr) {
+  const duplicates = arr.filter((item, index) => arr.includes(item, index + 1));
+  const ordered = duplicates.sort((a, b) => a - b);
+  return [...new Set(ordered)];
 }
 ```
